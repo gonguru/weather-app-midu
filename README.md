@@ -1,38 +1,17 @@
-# create-svelte
+# Miduweather
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+#Stolen resources
+-> Icons: https://ui8.net/hosein_bagheri/products/3d-weather-icons40
+-> Inspiration: https://dribbble.com/shots/16361858-Weather-Forecast-Mobile-application
 
-## Creating a project
+# What makes me cry during this development?
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte
-
-# create a new project in my-app
-npm init svelte my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+1.- Run svelte-kit with ssl certificate (vite) 
+    1.1 -> npm run dev -- --https
+2.- Obtaining geolocation by asking permissions
+    2.1 -> Permissions API doesn't work with safari (cause mobile first)
+        -> Promise ::resolve -> should return user location
+        -> Promise ::reject -> Lake Hilier by default
+    2.2 -> How svelte is saving state? -> stores.js
+        -> What is a writable? 
+        -> suscribe, set, update and magic $prop
