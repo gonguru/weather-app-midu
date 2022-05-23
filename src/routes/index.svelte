@@ -1,6 +1,6 @@
 <script>
-	import { getGeolocation } from '../routes/services/location.js';
-	import { getWeather } from '../routes/services/weather.js';
+	import { getGeolocation } from '../services/location.js';
+	import { getWeather } from '../services/weather.js';
 	import { weather } from '../stores.js';
 	import MainWeather from '../components/main-weather.svelte';
 

@@ -1,8 +1,11 @@
 # Miduweather
 
-#Stolen resources
+# Stolen resources
 -> Icons: https://ui8.net/hosein_bagheri/products/3d-weather-icons40
 -> Inspiration: https://dribbble.com/shots/16361858-Weather-Forecast-Mobile-application
+
+# Utils this time
+-> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
 
 # What makes me cry during this development?
 
@@ -15,3 +18,8 @@
     2.2 -> How svelte is saving state? -> stores.js
         -> What is a writable? 
         -> suscribe, set, update and magic $prop
+
+
+# What was really impressive
+
+1.- Deploy app to Vercel :0 (First i was trying with Railway but there's no "adapter" to it)

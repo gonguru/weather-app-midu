@@ -6,31 +6,44 @@
 </script>
 
 <main class="flex flex-col items-center">
-	<section class="bg-slate-200 rounded-md p-2 w-11/12">
+	<section class="rounded-md p-2 w-11/12">
 		<div class="flex justify-between">
-			<span class="text-md">Today</span>
+			<span class="text-md ml-4 mt-4">Today</span>
 			<small class="text-xs">{weatherObject.date}</small>
 		</div>
-		<div class="flex m-3">
-			<div class="w-1/2 text-center text-6xl">
+		<h2 class="text-center text-lg">
+			{weatherObject.description}
+		</h2>
+		<div class="flex m-2 items-center">
+			<div class="w-1/2 text-center text-8xl relative">
 				{weatherObject.temp}
-				<span class="text-xs absolute top-24">&#8451;</span>
+				<span class="text-xl absolute top-2 text-amber-500 font-semibold"> &#8451; </span>
 			</div>
-			<div class="w-1/2">Image here</div>
+			<img
+				class="w-1/2 m-0 object-cover max-w-screen-md"
+				src={weatherObject.image}
+				alt="weather representation"
+			/>
 		</div>
 		<div class="flex text-xs justify-evenly mb-1">
 			<aside class=" flex flex-col items-center">
 				{weatherObject.sunrise}
-				<small>Sunrise</small>
+				<span class="text-xs">Sunrise</span>
 			</aside>
 			<aside class=" flex flex-col items-center">
 				{weatherObject.sunset}
-				<small>Sunset</small>
+				<span class="text-xs">Sunset</span>
 			</aside>
 		</div>
 		<p class="text-xs text-center p-1">
 			<i class="lni lni-map-marker" />
-			{weatherObject.name}
+			<small>{weatherObject.name}</small>
 		</p>
 	</section>
 </main>
+
+<style>
+	section {
+		background-image: radial-gradient(rgba(102 153 255 /0.1), rgba(0 0 0 /0.3));
+	}
+</style>
