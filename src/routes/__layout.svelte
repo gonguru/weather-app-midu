@@ -5,7 +5,7 @@
 <head>
 	<title>Miduweather</title>
 </head>
-<div class="h-screen font-outfit text-white">
+<div class="h-screen font-outfit text-white relative">
 	<h1 class="text-center p-3 text-slate-50 text-sm">Miduweather</h1>
 	<slot />
 </div>

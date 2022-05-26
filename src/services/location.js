@@ -1,6 +1,6 @@
 import { browser } from '$app/env';
 
-const getGeolocation = async () => {
+const getGeolocation = () => {
     return new Promise((resolve, reject) => {
         if (browser) {
             if ('geolocation' in navigator) {
@@ -13,9 +13,7 @@ const getGeolocation = async () => {
                         })
                     },
                     (error) => {
-                        reject(
-                            console.error(error.message)
-                        )
+                        reject({ message: error.message })
                     },
                     { enableHighAccuracy: true })
             }
