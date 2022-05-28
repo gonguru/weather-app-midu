@@ -13,8 +13,8 @@ export async function get(event) {
         }
     };
 
-    const url = `http://localhost:3000/api/test`;
-    // const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${query}`
+    // const url = `http://localhost:3000/api/test`;
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${query}`
     let weather
     let response
     try {
