@@ -1,5 +1,5 @@
 <script>
-	export let message = 'Loading...';
+	import { msg } from '../stores.js';
 </script>
 
 <div class="flex h-2/3 items-center justify-center">
@@ -8,7 +8,7 @@
 			<img src="/img/earth_3d.gif" alt="spinner" />
 		</div>
 		<div class="spinner w-52 h-52" />
-		<p class="mt-10 text-center">{message}</p>
+		<p class="mt-10 text-center">{$msg}</p>
 	</div>
 </div>
 

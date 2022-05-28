@@ -1,17 +1,15 @@
 <script>
 	import { getGeolocation } from '../services/location.js';
 	import { getWeather } from '../services/weather.js';
-	import { weather, alerts } from '../stores.js';
+	import { weather, alerts, loading, msg } from '../stores.js';
 	import MainWeather from '../components/main-weather.svelte';
 	import Spinner from '../components/spinner.svelte';
 	import Alert from '../components/alert.svelte';
-
-	let loading = false;
-	let message = '';
+	import Forecast from '../components/forecast.svelte';
 
 	async function app() {
-		loading = true;
-		message = 'Obtaining geolocation...';
+		msg.set('Obtaining geolocation...');
+		loading.set(true);
 		let location;
 		try {
 			location = await getGeolocation();
@@ -21,21 +19,25 @@
 				border: 'border-green-600'
 			});
 		} catch (error) {
-			//Lake Hillier - Australia (Default values)
+			//Guadalajara ,Jalisco - México (Default values)
 			location = {
-				latitude: 20.6737919,
-				longitude: -103.3354131
+				latitude: 20.67,
+				longitude: -103.39
 			};
 			addAlert({
 				id: new Date().getMilliseconds(),
 				message: error.message,
 				border: 'border-red-600'
 			});
+			addAlert({
+				id: new Date().getMilliseconds(),
+				message: 'Geolocation failed, showing Guadalajara - México',
+				border: 'border-red-600'
+			});
 		} finally {
-			const { latitude, longitude } = location;
-			const weatherObj = await getWeather(latitude, longitude);
+			const weatherObj = await getWeather(location);
 			weather.set(weatherObj);
-			loading = false;
+			loading.set(false);
 		}
 	}
 
@@ -43,18 +45,21 @@
 		setTimeout(() => {
 			let filteredAlerts = $alerts.filter((alert) => alertObj.id !== alert.id);
 			alerts.set(filteredAlerts);
-		}, 3000);
+		}, 5000);
 		alerts.update((alerts) => [...alerts, alertObj]);
 	}
 
 	app();
 </script>
 
-{#if loading}
-	<Spinner {message} />
+{#if $loading}
+	<Spinner />
 {:else}
 	<MainWeather />
-	{#each $alerts as alert}
-		<Alert border={alert.border} message={alert.message} />
-	{/each}
+	<Forecast />
+	<div class="left-0 right-0 absolute flex flex-col items-center md:w-1/2">
+		{#each $alerts as alert}
+			<Alert border={alert.border} message={alert.message} />
+		{/each}
+	</div>
 {/if}

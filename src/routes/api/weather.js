@@ -3,7 +3,8 @@ import { imageResolver } from '../../helpers/urlResolver.js'
 
 export async function get(event) {
     const { searchParams } = event.url
-    const coords = searchParams.get('coords')
+    const query = searchParams.get('q')
+
     const options = {
         method: 'GET',
         headers: {
@@ -12,11 +13,13 @@ export async function get(event) {
         }
     };
 
-    // const url = `http://localhost:3000/api/test`;
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${coords}&days=3`;
+    const url = `http://localhost:3000/api/test`;
+    // const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${query}`
+    let weather
+    let response
     try {
-        const response = await fetch(url, options);
-        const weather = await response.json();
+        response = await fetch(url, options);
+        weather = await response.json();
         const { location, current, forecast: { forecastday } } = weather
         const { name, region, country, localtime_epoch } = location
         const { temp_c, condition, is_day } = current
@@ -41,7 +44,12 @@ export async function get(event) {
         }
 
     } catch (error) {
-        console.error(error)
+        return {
+            status: response.status,
+            body: {
+                message: weather.error?.message
+            }
+        }
     }
 
 };
