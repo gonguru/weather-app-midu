@@ -14,7 +14,7 @@ export async function get(event) {
     };
 
     // const url = `http://localhost:3000/api/test`;
-    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${query}`
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${query}&days=3`
     let weather
     let response
     try {
@@ -26,7 +26,6 @@ export async function get(event) {
         const { text, code } = condition
         const [today, tomorrow, afterTomorrow] = forecastday
         const { day: { maxtemp_c }, day: { mintemp_c } } = today
-
         const body = {
             today: {
                 temp: Math.round(temp_c),
@@ -35,7 +34,25 @@ export async function get(event) {
                 name: `${name}, ${region} - ${country}`,
                 date: dateFormat(localtime_epoch),
                 image_src: imageResolver(code, is_day),
-                description: text
+                condition: text,
+            },
+            tomorrow: {
+                date: dateFormat(tomorrow.date_epoch),
+                image_src: imageResolver(
+                    tomorrow.day.condition.code,
+                    true
+                ),
+                condition: tomorrow.day.condition.text,
+                temp: Math.round(tomorrow.day.avgtemp_c)
+            },
+            afterTomorrow: {
+                date: dateFormat(afterTomorrow.date_epoch),
+                image_src: imageResolver(
+                    afterTomorrow.day.condition.code,
+                    true
+                ),
+                condition: afterTomorrow.day.condition.text,
+                temp: Math.round(afterTomorrow.day.avgtemp_c)
             }
         }
         return {
@@ -45,7 +62,8 @@ export async function get(event) {
 
     } catch (error) {
         return {
-            status: response.status,
+            // status: response.status,
+            status: 400,
             body: {
                 message: weather.error?.message
             }

@@ -3,7 +3,8 @@ export const dateFormat = (unixTimeFormat) => {
     const FORMATER_CONFIG = {
         weekday: 'long',
         month: 'long',
-        day: 'numeric'
+        day: 'numeric',
+        timeZone: 'UTC'
     }
     return Intl.DateTimeFormat('en-US', FORMATER_CONFIG).format(milliseconds)
 }

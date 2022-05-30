@@ -6,6 +6,7 @@
 	import Spinner from '../components/spinner.svelte';
 	import Alert from '../components/alert.svelte';
 	import Forecast from '../components/forecast.svelte';
+	import HourForecast from '../components/hour-forecast.svelte';
 
 	async function app() {
 		msg.set('Obtaining geolocation...');
@@ -57,7 +58,8 @@
 {:else}
 	<MainWeather />
 	<Forecast />
-	<div class="left-0 right-0 absolute flex flex-col items-center md:w-1/2">
+	<HourForecast />
+	<div class="left-0 right-0 fixed top-3 flex flex-col items-center md:w-1/2">
 		{#each $alerts as alert}
 			<Alert border={alert.border} message={alert.message} />
 		{/each}
