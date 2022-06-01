@@ -6,48 +6,51 @@
 	});
 
 	const { tomorrow, afterTomorrow } = weatherObj;
-	console.log(tomorrow, afterTomorrow);
 </script>
 
-<div id="forecast" class="flex gap-4 w-11/12 mx-auto mt-3">
-	<section class="flex flex-col items-center sm:w-1/2 smoke rounded-md p-3 h-full">
-		<small class="text-xs">{tomorrow.date}</small>
-		<div class="flex items-center justify-center">
-			<p class="text-center relative text-4xl w-1/3">
+<div id="forecast" class="flex gap-3 w-11/12 mx-auto mt-3">
+	<section class="sm:w-1/2 p-1 smoke flex items-center rounded-md text-xs flex-col">
+		<small>{tomorrow.date}</small>
+		<div class="flex h-full w-full justify-center">
+			<p class="relative text-3xl w-1/3 self-end">
 				{tomorrow.temp}
 				<strong class="absolute text-sm text-amber-500"> &#8451; </strong>
 			</p>
-
-			<div class="w-2/3">
-				<img preload class="object-cover" src={tomorrow.image_src} alt="weather representation" />
-			</div>
+			<img
+				class="w-2/4 object-contain self-start"
+				src={tomorrow.image_src}
+				alt={tomorrow.condition}
+			/>
 		</div>
-		<h4 class="text-xs">{tomorrow.condition}</h4>
+		<p>{tomorrow.condition}</p>
 	</section>
 
-	<section class="flex flex-col items-center sm:w-1/2 smoke rounded-md p-3">
-		<small class="text-xs">{afterTomorrow.date}</small>
-		<div class="flex items-center justify-center">
-			<p class="text-center relative text-4xl w-1/3">
+	<section class="sm:w-1/2 p-1 smoke flex items-center rounded-md text-xs flex-col">
+		<small>{afterTomorrow.date}</small>
+		<div class="flex h-full w-full justify-center">
+			<p class="relative text-3xl w-1/3 self-end">
 				{afterTomorrow.temp}
 				<strong class="absolute text-sm text-amber-500"> &#8451; </strong>
 			</p>
-
-			<div class="w-2/3">
-				<img
-					preload
-					class="object-cover"
-					src={afterTomorrow.image_src}
-					alt="weather representation"
-				/>
-			</div>
+			<img
+				class="w-2/4 object-contain self-start"
+				src={afterTomorrow.image_src}
+				alt={afterTomorrow.condition}
+			/>
 		</div>
-		<h4 class="text-xs">{afterTomorrow.condition}</h4>
+		<p>{afterTomorrow.condition}</p>
 	</section>
 </div>
 
 <style>
 	#forecast {
-		height: 20%;
+		min-height: 20%;
+	}
+	section p:first-child {
+		text-shadow: 1px 1px 0.5rem #040450;
+	}
+
+	strong {
+		text-shadow: 1px 1px 5px #040450;
 	}
 </style>

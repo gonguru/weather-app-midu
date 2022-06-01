@@ -59,7 +59,7 @@
 	<MainWeather />
 	<Forecast />
 	<HourForecast />
-	<div class="left-0 right-0 fixed top-3 flex flex-col items-center md:w-1/2">
+	<div class="left-0 right-0 fixed top-3 flex flex-col items-center md:w-1/2 sm:z-20">
 		{#each $alerts as alert}
 			<Alert border={alert.border} message={alert.message} />
 		{/each}

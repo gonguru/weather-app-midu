@@ -44,9 +44,10 @@
 	<i class="lni lni-search-alt text-white top-0 left-0 mx-auto text-xl" />
 	<input
 		id="search"
-		class="cursor-pointer text-slate-600 fixed pl-3 rounded-full sm:w-9 sm:h-9"
+		autocomplete="off"
+		class="cursor-pointer text-slate-600 fixed pl-4 rounded-full sm:w-9 sm:h-9"
 		type="text"
-		placeholder="City"
+		placeholder="City name"
 	/>
 </div>
 

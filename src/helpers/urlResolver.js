@@ -9,7 +9,7 @@ export const imageResolver = (code, is_day) => {
     } else if ([1150, 1153, 1168, 1171, 1180, 1183, 1186, 1189, 1240].includes(code)) {//Light Rain
         return 'https://res.cloudinary.com/gonguru/image/upload/v1653277000/medium_300_55d7def738.png'
     } else if ([1063, 1192, 1195, 1198, 1243, 1246].includes(code)) {//Rain
-        return 'https://res.cloudinary.com/gonguru/image/upload/v1653276972/medium_310_ee790d2eca.png'
+        return 'https://res.cloudinary.com/gonguru/image/upload/v1654056086/small_310_08618a9a27.png'
     } else if ([1222, 1225].includes(code)) {//Snow
         return 'https://res.cloudinary.com/gonguru/image/upload/v1653277320/medium_600_63a8ecb20f.png'
     } else if ([1207, 1237, 1252, 1261, 1264].includes(code)) {//Sleet
