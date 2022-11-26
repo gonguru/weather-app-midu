@@ -5,7 +5,7 @@
 </script>
 
 <head>
-	<title>Miduweather</title>
+	<title>AngyeWeather</title>
 </head>
 <div class="h-screen font-outfit text-white relative overflow-y-scroll">
 	<header>
